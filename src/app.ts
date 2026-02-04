@@ -3,8 +3,10 @@ import express from "express";
 import path from "path";
 import { authenticate } from "./middlewares/auth.middleware";
 import authRoutes from "./routes/auth.route";
+import bankRoutes from "./routes/bank.route";
 import categoryRoutes from "./routes/category.routes";
 import productRoutes from "./routes/product.route";
+import transactionRoutes from "./routes/transaction.route";
 
 const app = express();
 
@@ -16,6 +18,8 @@ app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/banks", bankRoutes);
+app.use("/api/transactions", transactionRoutes);
 
 app.get("/", (req, res) => {
   res.send("sporton backend API is running");
